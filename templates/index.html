@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}统计工时用的你敢信{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Hello,{% if name %}{{ name }}{% else %}你还没有登陆哦{% endif %}</h1>
+</div>
+    <div>
+
+        {% if name %}
+            <a href="/logout"><button class="btn btn-default btn-lg">退出账号</button></a>
+            <a href="/time"><button class="btn btn-default btn-lg">记录工时</button></a>
+        {% else %}
+            <a href="/login"><button class="btn btn-default btn-lg">登陆</button></a>
+        {% endif %}
+
+
+    </div>
+    {% if results %}
+    <div>
+    <table class="table">
+	<caption>基本的表格布局</caption>
+   <thead>
+      <tr>
+         <th>时长</th>
+         <th>日期</th>
+          <th>工作内容</th>
+      </tr>
+   </thead>
+   <tbody>
+   {% for result in results%}
+        <tr>
+        {% for j  in result %}
+
+             <td>{{ j }}</td>
+
+        {% endfor %}
+       </tr>
+   {% endfor %}
+        <tr>
+             <td>{{ j }}</td>
+       </tr>
+   </tbody>
+</table>
+    </div>
+    {% else %}
+        ~\(≧▽≦)/~
+    {% endif %}
+
+{% endblock %}

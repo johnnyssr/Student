@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}管理员界面{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Hello,{% if name %}{{ name }}{% else %}你还没有登陆哦{% endif %}</h1>
+</div>
+    <div>
+
+        {% if name %}
+            <a href="/logout"><button class="btn btn-default btn-lg">退出admin用户</button></a>
+        {% else %}
+            <button class="btn btn-default btn-lg"><a href="/login">请先登陆哦哦哦</a></button>
+        {% endif %}
+
+
+
+    {% if results %}
+
+    <table class="table" id="table">
+    <a href="/download/time.xls"><button class="btn btn-default btn-lg">下载详细总表</button></a>
+    <a href="/download/timeSum.xls"><button class="btn btn-default btn-lg">下载工时统计表</button></a>
+	<caption>工时统计查询</caption>
+   <thead>
+      <tr>
+           <th>学号</th>
+           <th>姓名</th>
+         <th>时长</th>
+         <th>日期</th>
+          <th>工作内容</th>
+      </tr>
+   </thead>
+   <tbody>
+   {% for result in results%}
+        <tr>
+        {% for j  in result %}
+
+             <td>{{ j }}</td>
+
+        {% endfor %}
+       </tr>
+   {% endfor %}
+        <tr>
+             <td>{{ j }}</td>
+       </tr>
+   </tbody>
+</table>
+    </div>
+    {% else %}
+        ~\(≧▽≦)/~
+    {% endif %}
+
+{% endblock %}
+

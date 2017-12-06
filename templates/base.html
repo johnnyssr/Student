@@ -1,0 +1,60 @@
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}
+  <head>
+    {%- block head %}
+    <title>{% block title %}{% endblock title %}</title>
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- endblock metas %}
+
+    {%- block styles %}
+    <!-- Bootstrap -->
+    <link href="{{bootstrap_find_resource('css/bootstrap.css', cdn='bootstrap')}}" rel="stylesheet">
+
+
+
+
+
+         <link href="../static/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../static/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+
+    <script type="text/javascript" src="../static/jquery/jquery-1.8.3.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+
+
+
+
+
+
+
+    {%- endblock styles %}
+    {%- endblock head %}
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+        {# 渲染flash消息 #}
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-warning">
+            <button data-dismiss="alert" type="button" class="close">&times;</button>
+            {{ message }}
+            </div>
+        {% endfor %}
+    {% block navbar %}
+        <nav class="navbar navbar-inverse"><!-- 导航部分 -->导航</nav>
+    {%- endblock navbar %}
+    {% block content -%}
+    {%- endblock content %}
+
+    {% block scripts %}
+    <script src="{{bootstrap_find_resource('jquery.js', cdn='jquery')}}"></script>
+    <script src="{{bootstrap_find_resource('js/bootstrap.js', cdn='bootstrap')}}"></script>
+    {%- endblock scripts %}
+    {%- endblock body %}
+  </body>
+{%- endblock html %}
+</html>
+{% endblock doc -%}
